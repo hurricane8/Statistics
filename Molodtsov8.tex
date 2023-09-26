@@ -1,0 +1,41 @@
+\documentclass[14pt]{extarticle}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\DeclareCaptionLabelSeparator{dot}{. }
+\captionsetup{justification=centering,labelsep=dot}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\input glyphtounicode.tex
+\input glyphtounicode-cmr.tex
+\pdfgentounicode=1
+\usepackage{bm}
+
+\begin{document}
+
+ФИО: Молодцов Глеб Львович
+
+\vspace{10pt}
+
+Номер задачи: 8
+
+\vspace{10pt}
+
+Решение:
+
+\vspace{10pt}
+
+Необходимые условия для применения критерия согласия $\chi ^2 $ Пирсона выполнены. Действительно, $n = 77 \geq 50, \nu = 6 \geq 5$.\\
+Для проверки пройдёмся по шагам алгоритма:\\
+\begin{itemize}
+    \item $\nu_j = \sum\limits_{i=1}^{n} \mathbb{I}\{x_i = j\} $ даны по условию
+    \item $T\chi^2 = \sum\limits_{j=1}^N\frac{(\nu_j - np_j^0)^2}{np_j^0} = \frac{9 + 64 + 4 + 16 + 1 + 4}{12} = \frac{98}{12} \approx 8.167$
+    \item $t_\alpha = (1-\alpha) $-квантиль распределения $\chi^2(5) $. \item $t_{0.01} =  15.086 > 8.167 \Rightarrow  $ не отклоняем гипотезу.
+\end{itemize}
+
+Ответ: не отклоняем гипотезу
+
+\end{document}
