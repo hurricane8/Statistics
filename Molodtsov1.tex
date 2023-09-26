@@ -1,0 +1,53 @@
+\documentclass[14pt]{extarticle}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\DeclareCaptionLabelSeparator{dot}{. }
+\captionsetup{justification=centering,labelsep=dot}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\input glyphtounicode.tex
+\input glyphtounicode-cmr.tex
+\pdfgentounicode=1
+\usepackage{bm}
+
+\begin{document}
+
+ФИО: Молодцов Глеб Львович
+
+\vspace{10pt}
+
+Номер задачи: 1
+
+\vspace{10pt}
+
+Решение:
+
+\vspace{10pt}
+Запишем случайной величины для эмпирической функции распределения:
+\begin{equation}
+    \notag
+    \frac{nF_n(x^*)-nF(x^*)}{\sqrt{nF(x^*) \left( 1-F \left(x^* \right) \right)}} \xrightarrow[n \rightarrow \infty]{d} \xi_{\mathcal{N}(0,1)} \in \mathcal{N}(0,1)
+\end{equation}
+Сведём вероятность, данную в задаче, к левой части Центральной предельной теоремы:
+\begin{multline*}
+    \mathbb{P} \left\{ |F_n(x^*)-F(x^*)| \leqslant \frac{t}{\sqrt{n}}\right\} = \\ =
+    \mathbb{P}\left\{\frac{n|F_n(x^*)-F(x^*)|}{\sqrt{n F(x^*) \left( 1-F \left(x^* \right) \right)}} \leqslant \frac{t}{\sqrt{F(x^*) \left( 1-F \left(x^* \right) \right)}}\right\} = \\
+    = \mathbb{P}\biggl\{ - \frac{t}{\sqrt{F(x^*) \left( 1-F \left(x^* \right) \right)}}
+    \leqslant \frac{nF_n(x^*)-nF(x^*)}{\sqrt{n F(x^*) \left( 1-F \left(x^* \right) \right)}} \leqslant \\
+    \leqslant \frac{t}{\sqrt{F(x^*) \left( 1-F\left(x^* \right) \right)}} \biggr\} 
+\end{multline*}
+Вспомним плотность функции распределения случайной величины из нормального распределения $\xi \in \mathcal{N}(0,1)$:
+\begin{equation}
+    \notag
+    f(x) = \frac{1}{\sqrt{2 \pi}} \exp\left(-\frac{x^2}{2} \right) \Rightarrow F_\xi(x) = \int_{-\infty}^{x} f(y) \,dy 
+\end{equation} 
+Тогда найдем итоговый ответ, взяв определенный интеграл с полученными из ЦПТ верхним и нижним пределами:
+\begin{multline*}
+    \mathbb{P} \left\{ |F_n(x^*)-F(x^*)| \leqslant \frac{t}{\sqrt{n}}\right\} = \\
+    = F_\xi \left(\frac{t}{\sqrt{F(x^*) \left( 1-F \left(x^* \right) \right)}} \right) - F_\xi\left(- \frac{t}{\sqrt{F(x^*) \left( 1-F \left(x^* \right) \right)}} \right) ,\xi \in \mathcal{N}(0,1)
+\end{multline*}
+\end{document}
