@@ -1,0 +1,83 @@
+\documentclass[14pt]{extarticle}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\DeclareCaptionLabelSeparator{dot}{. }
+\captionsetup{justification=centering,labelsep=dot}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\input glyphtounicode.tex
+\input glyphtounicode-cmr.tex
+\pdfgentounicode=1
+\usepackage{bm}
+
+\begin{document}
+
+ФИО: Молодцов Глеб Львович
+
+\vspace{10pt}
+
+Номер задачи: 1
+
+\vspace{10pt}
+
+Решение:
+
+\vspace{10pt}
+
+Найдём совместную функцию распределения $\mathbb{P}\{X_{(1)}<x,X_{(n)}<y\}$, для этого разберём отдельно случаи $x\geqslant y$  и  $x<y$, для которого $\mathbb{P}\{X_{(1)}<x,X_{(n)}<y\}=\mathbb{P}\{X_{(n)}<y\}-\mathbb{P}\{X_{(1)}\geqslant x,X_{(n)}<y\}$. Сначала рассмотрим второй случай. Найдем данные вероятности, используя функцию распределения равномерного распределения:
+\begin{gather*} 
+    \mathbb{P}\{X_{(n)}<y\} = \left(\frac{y-a}{b-a}\right)^n  \\
+    \mathbb{P}\{X_{(1)}\geqslant x,X_{(n)}<y\} = \Bigl(F(y) - F(x)\Bigr)^n = \left(\frac{y-a}{b-a} - \frac{x-a}{b-a}\right)^n = \left(\frac{y-x}{b-a}\right)^n ,
+\end{gather*}
+где $\mathcal{F}(x) = \frac{x-a}{b-a}$ - соответствующая функция распределения равномерного на заданном отрезке распределения. Тогда получим: 
+\begin{equation*} 
+\mathbb{P}\{X_{(1)}<x,X_{(n)}<y\}= \left(\frac{y-a}{b-a}\right)^n - \left(\frac{y-x}{b-a}\right)^n = \frac{1}{(b-a)^n}\Bigl( (y-a)^n - (y-x)^n \Bigr)
+\end{equation*}
+Для подсчета совместной плотности распределения, продифференцируем функцию распределения по $x$ и $y$. 
+\begin{equation*} 
+\frac{\partial^2 F}{\partial y \partial x}= \frac{\partial \biggl(\frac{n}{(b-a)^n}\Bigl( (y-a)^{n-1} - (y-x)^{n-1} \Bigr) \biggr)}{\partial x} = \frac{n(n-1)}{(b-a)^n}(y-x)^{n-2}
+\end{equation*}
+Аналогично можем расписать данную смешанную производную для первого случая ($x \geqslant y$):
+\begin{gather*} 
+\mathbb{P}\{X_{(1)}<x,X_{(n)}<y\} = \left(\frac{y-a}{b-a}\right)^n \Rightarrow \frac{\partial^2 F}{\partial y \partial x}=0
+\end{gather*} 
+Таким образом, получим общее распределение:
+
+\begin{equation*}
+    f(x, y) = 
+    \begin{cases}
+      \frac{n(n-1)}{(b-a)^n}(y-x)^{n-2},~ \text{if } (x \leqslant y) \wedge (x, y \in [a, b])\\
+      0, ~\text{else}
+    \end{cases}\,
+\end{equation*}
+Для поиска математических ожиданий и дисперсии будем пользоваться тем, что порядковые статистики из равномерного распределения на отрезке $[0,1]$ имеют известное распределение — бета-распределение: для $X_k \in U(0,1)$ порядковые статистики $X_{(k)}\in\mathrm{Beta}(k,n-k+1)$. Для начала перейдём к случайным величинам на отрезке $[0,1]$, которые линейно связаны с исходными величинами на $[a,b]$:
+$$\frac{X_{(1)} - a}{b-a} \in\mathrm{Beta}(1,n) \quad \quad \quad \quad \frac{X_{(n)} - a}{b-a} \in\mathrm{Beta}(n,1)$$
+ Для бета-распределения мы знаем математическое ожидание и дисперсию:\\
+\begin{gather*}
+    \mathbb{E}\left[\frac{X_{(1)} - a}{b-a}\right] = \frac{1}{n+1} \quad \Rightarrow \quad \mathbb{E}[X_{(1)}] = \frac{b-a}{n+1} + a \\
+    \mathbb{E}\left[\frac{X_{(n)} - a}{b-a}\right] = \frac{n}{n+1} \quad \Rightarrow \quad \mathbb{E}[X_{(n)}] = \frac{n(b-a)}{n+1} + a \\
+    \mathbb{D}\left[\frac{X_{(1)} - a}{b-a}\right] = \frac{n}{(n+1)^2(n+2)} \quad \Rightarrow \quad \mathbb{D}[X_{(1)}] = \frac{n(b-a)^2}{(n+1)^2(n+2)} \\
+    \mathbb{D}\left[\frac{X_{(n)} - a}{b-a}\right] = \frac{n}{(n+1)^2(n+2)} \quad \Rightarrow \quad \mathbb{D}[X_{(n)}] = \frac{n(b-a)^2}{(n+1)^2(n+2)} \\
+\end{gather*}
+Осталось найти коэффициент корелляции:
+\begin{gather*}
+\mathbb{E}\left[X_{(1)} X_{(n)}\right]=\int_a^b \int_a^b  x y \frac{n(n-1)}{(b-a)^n}(y-x)^{n-2}dxdy=\biggr/f \neq 0 \Leftrightarrow y \geqslant x \biggr/ = \\ = \int_a^b \biggl[\frac{n(b-x)^{n-1} x b}{(b-a)^n} - \int_x^b \frac{n(y-x)^{n-1} x}{(b-a)^n} d y\biggr] dx= \\ = \int_a^b \frac{n(b-x)^{n-1} x b}{(b-a)^n} d x-\int_a^b \frac{(b-x)^n x}{(b-a)^n} dx = \\
+=a b+\frac{b(b-a)}{n+1}-\frac{a(b-a)}{n+1}-\frac{(b-a)^2}{(n+2)(n+1)}=a b+\frac{(b-a)^2}{n+2} \\
+\operatorname{cov}\left(X_{(1)}, X_{(n)}\right)=a b+\frac{(b-a)^2}{n+2}-\left(a+\frac{b-a}{n+1}\right) \left(\frac{n(b-a)}{n+1} + a\right)= \\
+=a b+\frac{(b-a)^2}{n+2}-\left(a+\frac{b-a}{n+1}\right) \left(b-\frac{b-a}{n+1}\right)
+=\frac{(b-a)^2}{(n+2)(n+1)^2} \\ 
+r\left(X_{(1)}, X_{(n)}\right)=\frac{\operatorname{cov}\left(X_{(1)}, X_{(n)}\right)}{\sqrt{\mathbb{D}[X_{(1)}]} \sqrt{\mathbb{D}[X_{(2)}]}}=\frac{(b-a)^2}{(n+2)(n+1)^2} \cdot \frac{(n+1)^2(n+2)}{(b-a)^2  n}=\frac{1}{n}
+\end{gather*}
+Ответ:
+\begin{gather*}
+\mathbb{E}\left[\frac{X_{(1)} - a}{b-a}\right] = \frac{b-a}{n+1} + a \\
+\mathbb{E}\left[\frac{X_{(n)} - a}{b-a}\right] = \frac{a-b}{n+1} + b \\
+\mathbb{D}\left[\frac{X_{(1)} - a}{b-a}\right] = \frac{n(b-a)^2}{(n+1)^2(n+2)} \\
+\mathbb{D}\left[\frac{X_{(n)} - a}{b-a}\right] = \frac{n(b-a)^2}{(n+1)^2(n+2)} \\
+r\left(X_{(1)}, X_{(n)}\right)=\frac{1}{n}
+\end{gather*}
+\end{document}
