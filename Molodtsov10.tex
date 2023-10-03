@@ -1,0 +1,51 @@
+\documentclass[14pt]{extarticle}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\DeclareCaptionLabelSeparator{dot}{. }
+\captionsetup{justification=centering,labelsep=dot}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\input glyphtounicode.tex
+\input glyphtounicode-cmr.tex
+\pdfgentounicode=1
+\usepackage{bm}
+
+\begin{document}
+
+ФИО: Молодцов Глеб Львович
+
+\vspace{10pt}
+
+Номер задачи: 10
+
+\vspace{10pt}
+
+Решение:
+
+\vspace{10pt}
+
+Необходимые условия для применения критерия согласия $\chi ^2 $ для сложной гипотезы выполнены. Действительно, $n = 200 \geq 50, \nu_i \geq 5 \quad \forall i \in \{0,1,2\}, \nu = \left( 10,181, 9\right)^T, N = 3$. Выберем $\alpha = 0.05$. \\
+Для проверки пройдёмся по шагам алгоритма:
+\begin{itemize}
+    \item $p_0^0(\theta) = c_2^0\theta^0(1-\theta)^2 = (1-\theta)^2$
+    \\ $p_1^0(\theta) = c_2^1\theta^0(1-\theta) = 2\theta(1-\theta)$
+    \\ $p_2^0(\theta) = c_2^2\theta^0(1-\theta)^0 = \theta^2$
+    \item $\hat{\theta} = \arg\underset{\theta}{\max} \prod\limits_{j = 1}^N\left(p_j^0\left(\theta\right)\right)^{\nu_j} \Leftrightarrow \sum\limits_{j=1}^{N}\frac{\nu_j}{p_j^0\left(\theta\right)}\cdot \frac{\partial p_j^0\left(\theta\right)}{\partial\theta_k}$
+    \\$\frac{\nu_0}{p_0^0\left(\theta\right)}\cdot \frac{\partial p_0^0\left(\theta\right)}{\partial\theta} + \frac{\nu_1}{p_1^0\left(\theta\right)}\cdot \frac{\partial p_1^0\left(\theta\right)}{\partial\theta} + \frac{\nu_2}{p_2^0\left(\theta\right)}\cdot \frac{\partial p_2^0\left(\theta\right)}{\partial\theta} = 0$ 
+    \\ $\frac{10}{(1-\theta)^2}\cdot \left(-2\left(1-\theta\right)\right) + \frac{181}{2\theta(1-\theta)}\cdot (2-4\theta) + \frac{9}{\theta^2}\cdot 2\theta = 0$
+    \\ $\frac{-2\cdot 10 \cdot\theta^2(1-\theta) + 181\theta(1-\theta)\cdot(1-2\theta) + 18\theta(1-\theta)^2}{\theta^2\cdot(1-\theta)^2} = 0$
+    \\ $- 2 \cdot 10 \cdot\theta^2 + 181\theta\cdot(1-2\theta) + 18\theta(1-\theta) = 0$
+    \\ $- 2 \cdot 10 \cdot\theta + 181\cdot(1-2\theta) + 18(1-\theta) = 0$
+    \\ $\theta\cdot2\cdot(200) = 199$
+    \\ $\hat{\theta} = \frac{199}{400} = 0.4975$
+    \item $T\chi^2 = \sum\limits_{j=1}^N\frac{(\nu_j - np_j^0(\hat{\theta}))^2}{np_j^0(\hat{\theta})} = \frac{(10-200\cdot0.2525)^2}{200\cdot0.2525} + \frac{(181-200\cdot0.4999)^2}{200\cdot0.4999} + \frac{(9-200\cdot0.2475)^2}{200\cdot0.2475} \approx 131.2721$
+    \item $t_{0.05} = (1-0.05) $-квантиль распределения $\chi^2(3-1-1) $. \item $t_{0.05} =  3.8 < 131.2721 \Rightarrow  $  отклоняем гипотезу.
+\end{itemize}
+
+Ответ: отклоняем гипотезу 
+
+\end{document}
