@@ -1,0 +1,43 @@
+\documentclass[14pt]{extarticle}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\DeclareCaptionLabelSeparator{dot}{. }
+\captionsetup{justification=centering,labelsep=dot}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\input glyphtounicode.tex
+\input glyphtounicode-cmr.tex
+\pdfgentounicode=1
+\usepackage{bm}
+
+\begin{document}
+
+ФИО: Молодцов Глеб Львович
+
+\vspace{10pt}
+
+Номер задачи: 11
+
+\vspace{10pt}
+
+Решение:
+
+\vspace{10pt}
+Для ответа на поставленный вопрос, применим критерий однородности.
+Необходимые условия для применения критерия однородности $\chi ^2 $ выполнены. Действительно, $n \geq 50, \nu_i \geq 5$. Выберем $\alpha = 0.01$. \\
+
+Для проверки пройдёмся по шагам алгоритма:
+\begin{itemize}
+    \item $\nu_{\cdot 1} = 25 + 52 = 77, \nu_{\cdot 2} = 50 + 41 = 91, \nu_{\cdot 3} = 25 + 7 = 32, n = 200, n_1 = 100, n_2 = 100$
+    \\ $\hat{P_1} = \frac{77}{200} = 0.385, \hat{P_2} = \frac{91}{200} = 0.455, \hat{P_3} = \frac{32}{200} = 0.16$
+    \item $T\chi^2 = \sum\limits_{i=1}^2\sum\limits_{j=1}^3\frac{(\nu_{ij} - n_i\hat{P_j})^2}{n_i\hat{P_j}} = \frac{(25-100\cdot0.385)^2}{100\cdot0.385} + \frac{(50-100\cdot0.455)^2}{100\cdot0.455} +  \frac{(25-100\cdot0.16)^2}{100\cdot0.16} + \frac{(52-100\cdot0.385)^2}{100\cdot0.385} + \frac{(41-100\cdot0.455)^2}{100\cdot0.455} +  \frac{(7-100\cdot0.16)^2}{100\cdot0.16} \approx 20.48$
+    \item $t_{0.01} = (1-0.01) $-квантиль распределения $\chi^2(1 \cdot 2) $. \item $t_{0.01} =  9.2 < 20.48 \Rightarrow  $  отклоняем гипотезу.
+\end{itemize}
+
+Ответ: отклоняем гипотезу 
+
+\end{document}
