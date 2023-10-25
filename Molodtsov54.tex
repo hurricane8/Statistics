@@ -1,0 +1,126 @@
+\documentclass[14pt]{extarticle}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\DeclareCaptionLabelSeparator{dot}{. }
+\captionsetup{justification=centering,labelsep=dot}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\input glyphtounicode.tex
+\input glyphtounicode-cmr.tex
+\pdfgentounicode=1
+\usepackage{bm}
+
+\begin{document}
+
+ФИО: Молодцов Глеб Львович
+
+\vspace{10pt}
+
+Номер задачи: 54
+
+\vspace{10pt}
+
+Решение:
+
+\vspace{10pt}
+
+Сначала запишем функцию правдоподобия для обеих гипотез: \\
+
+$$
+L_1(x) = \frac{1}{9}\mathbb{I}(x\in[0,3]^2)$$
+\\
+$$L_2(x) = 0,25 \cdot \exp(-\frac{1}{2}(x_1 + x_2))\cdot \mathbb I\{x_1\geqslant 0\}\mathbb I\{x_2\geqslant 0\}
+$$ \\
+
+Теперь составим функцию отношения правдоподобия: \\
+$$
+l(x) = \frac{0,25\exp(-\frac{1}{2}(x_1 + x_2))\mathbb \mathbb I\{x_1\geqslant 0\}\mathbb I\{x_2\geqslant 0\}}{\frac{1}{9}\mathbb{I}(x\in[0,3]^2)}
+$$
+Рассмотрим несколько случаев:
+
+\begin{enumerate}
+\item $x\in [0,3]^2$. Тогда $l(x) = \frac{9}{4}\exp(-\frac{1}{2}(x_1 + x_2))$.
+\item $x_i \in [0,3], x_j\notin[0,3]$. Тогда, если $x_j \geqslant 0$, то $l(x) = +\infty$.
+\item $x_i, x_j \notin [0,3]$. Тогда, если $x_i, x_j \geqslant 0$, то $l(x) = +\infty$.
+\end{enumerate}
+
+Таким образом,
+
+\begin{equation*}
+l(x) = 
+\begin{cases}
+\frac{9}{4}\exp(-\frac{1}{2}(x_1 + x_2)), x\in[0,3]^2\\
++\infty, x\in [0, +\infty]^2\backslash[0,3]^2
+\end{cases}
+\end{equation*}
+
+\begin{equation*}
+\pi_{c, p}(x) = 
+\begin{cases}
+1, l(x) > c\\
+p, l(x) = c\\
+0, l(x) < c
+\end{cases}
+\end{equation*}
+
+\begin{equation*}
+\mathbb P_{H_1}(l(x) > c) + p \cdot \mathbb P_{H_1}(l(x) = c) = \alpha
+\end{equation*}
+Рассмотрим несколько случаев:
+\begin{enumerate}
+    \item 
+
+$c<0 \Longrightarrow \mathbb P_{H_1}(l(x) > c) + p \cdot \mathbb P_{H_1}(l(x) = c) \Longrightarrow$ не существует решений уравнения для $\alpha$. 
+\item 
+ $c>0\Longrightarrow $ 
+
+$\mathbb{P}_{H_{1}}(l(x)>c)= \mathbb{P}_{H_{1}}\left(2.25 \exp \left(-\frac{1}{2}\left(x_{1}+x_{2}\right)\right)>c\right) = \\
+= \mathbb{P}_{H_{1}}\left(l(x)=\frac{9}{4} \exp \left(-\frac{1}{2}\left(x_{1}+x_{2}\right)\right)\right)+P_{H_{1}}(l(x)=+\infty)= \\
+=\mathbb{P}_{H_{1}}\left(\frac{9}{4} \exp \left(-\frac{1}{2}\left(x_{1}+x_{2}\right)\right)>c\right)
+=\mathbb{P}_{H_{1}}\left(-\left(x_{1}+x_{2}\right)>2 \ln \left(\frac{4}{9} c\right)\right)= \\ =\mathbb{P}_{H_{1}}\left(x_{1}+x_{2}<c_1\right)
+$
+
+Рассмотрим площадь под пересечением прямой и квадрата. Найдём какое-нибудь $c_1$: такое, когда данная фигура - треугольник.
+
+$$
+\mathbb{P}_{H_{1}}\left(x_{1}+x_{2}<c_1\right)=\frac{1}{2} c_1^{2}
+$$
+
+Аналогично:
+
+$$
+\mathbb{P}_{H_{1}}(l(x)=c)=\mathbb{P}_{H_{1}}\left(x_{1}+x_{2}=c_1\right)=0
+$$
+
+Так как $\mathbb{P}_{H_{1}}\left(x_{1}+x_{2}=c_1\right)=0$, в силу того, что $x_{1}+x_{2}$ распределено непрерывно.
+
+Тогда получим:
+
+$
+\frac{1}{2} c_1^{2}=\alpha \Longrightarrow c_1=2 \sqrt{\alpha} \Longrightarrow p$ получилось произвольным $\Longrightarrow p=0$.
+\end{enumerate}
+В итоге
+
+\begin{equation*}
+\pi(x) = 
+\begin{cases}
+1, x_{1}+x_{2}<2 \sqrt{\alpha}, \text { или } x_{1}>3, \text { или } x_{2}>3\\
+0, x_{1}+x_{2} \geq 2 \sqrt{\alpha}
+\end{cases}
+\end{equation*}
+
+$
+\beta(\pi)=1-\mathbb{E}_{2} \pi(X)=1-\mathbb{P}_{2}\left(x_{1}+x_{2}<2 \sqrt{\alpha}\right)-\mathbb{P}_{2}\left(x_{1}>3\right)- \\ -\mathbb{P}_{2}\left(x_{2}>3\right) 
+=1-\Gamma(2,2)_{2 \sqrt{\alpha}}-\left(1-1+\exp \left(-\frac{3}{2}\right)\right)-\left(1-1+\exp \left(-\frac{3}{2}\right)\right) \Rightarrow 
+
+\\ 
+\Rightarrow 
+\beta(\pi) = 0.545
+$
+
+
+\end{document}
