@@ -1,0 +1,68 @@
+\documentclass[14pt]{extarticle}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\DeclareCaptionLabelSeparator{dot}{. }
+\captionsetup{justification=centering,labelsep=dot}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\input glyphtounicode.tex
+\input glyphtounicode-cmr.tex
+\pdfgentounicode=1
+\usepackage{bm}
+
+\begin{document}
+
+ФИО: Молодцов Глеб Львович
+
+\vspace{10pt}
+
+Номер задачи: 66(б)
+
+\vspace{10pt}
+
+Решение:
+
+\vspace{10pt}
+Запишем матрицу штрафов:
+$$
+\text{C}=\left(\begin{array}{ll}
+0 & c_{12}  \\
+c_{12}  & 0
+\end{array}\right), \quad \mathbb{P}\left[H_1\right]=\mathbb{P}\left[H_2\right]=\frac{1}{2}
+$$
+Запишем риски:
+$$
+R_1(\delta)=0+c_{12}  \cdot \mathbb{P}_1\left[H_2\right]=c_{12} \cdot \alpha, \quad R_2(\delta)=c_{12}  \cdot \beta
+$$
+
+Запишем Байесовский критерий для двух гипотез:
+$$
+l(x)=\frac{f_2(x)}{f_1(x)} \geqslant \frac{c_{21}-c_{11}}{c_{12}-c_{22}} \cdot \frac{q_1}{q_2}=1
+$$
+Тогда получим Байесовское решающее правило:
+$$
+\delta(x)=\left\{\begin{array}{l}
+1, l(x) \geqslant 1 \\
+0, l(x)<1
+\end{array}\right.
+$$
+Пусть решение принимается только на основании измерения второй компоненты. В таком случае СВ будет иметь одно из двух следующих нормальных распределений (одномерных):
+$$
+H_1^{\prime \prime}: N(0,1) \quad H_2^{\prime \prime}: N(0,1)
+$$
+
+Как мы видим, вторые компоненты распределены одинаково.
+При этом $l(x) = 1 \Rightarrow$ будет выбираться вторая гипотеза. \\
+Найдем ошибки первого и второго рода: 
+$\alpha=1, \beta=0$.\\
+Минимальный байесовский риск:
+$$
+r=\frac{\alpha+\beta}{2}\cdot c_{12} =\frac{1}{2} \cdot c_{12} 
+$$
+
+Ответ: $r(\delta)= \frac{1}{2} \cdot c_{12} $
+\end{document}
