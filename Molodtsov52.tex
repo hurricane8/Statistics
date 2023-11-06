@@ -1,0 +1,112 @@
+\documentclass[14pt]{extarticle}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\DeclareCaptionLabelSeparator{dot}{. }
+\captionsetup{justification=centering,labelsep=dot}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\input glyphtounicode.tex
+\input glyphtounicode-cmr.tex
+\pdfgentounicode=1
+\usepackage{bm}
+
+\begin{document}
+
+ФИО: Молодцов Глеб Львович
+
+\vspace{10pt}
+
+Номер задачи: 52
+
+\vspace{10pt}
+
+Решение:
+
+\vspace{10pt}
+
+Запишем матрицу штрафов:
+\begin{equation*}
+\text{C} = \left(
+\begin{array}{cccc}
+-1 & 2 \\
+2 & -1 
+\end{array}
+\right)
+\end{equation*}
+$$
+\pi_{c, p}(x)=\left\{\begin{array}{l}
+1, l(x)>c \\
+p, l(x)=c \\
+0, l(x)<c
+\end{array}\right.
+$$
+Выпишем риски:
+$$
+\begin{aligned}
+& R_1(\pi)=-1 \cdot \mathbb{P}_1\left[H_1\right]+2 \cdot \mathbb{P}_1\left[H_2\right]=-1 \cdot (1 - p_{21}) +2 \cdot p_{21} =3 \alpha-1 \\
+& R_2(\pi)= 2 \cdot \mathbb{P}_2\left[H_1\right] -1 \cdot \mathbb{P}_2\left[H_2\right]=2 \cdot p_{12} -1 \cdot (1 - p_{12})=3 \beta-1
+\end{aligned}
+$$
+Таким оборазом, $\alpha = \beta$. \\
+$$
+\left.
+  \begin{array}{ccc}
+    R_1(\pi) = -1 \cdot (1 - p_{21}) +2 \cdot p_{21} = 3 p_{21} - 1 \\
+    R_2(\pi) = p_{12} -1 \cdot (1 - p_{12}) =3 p_{12} - 1 \\
+  \end{array}
+\right\} \Rightarrow 3 p_{21} - 3 p_{12} = 2
+$$
+
+$$
+3\left(\mathbb{P}_1\left\{l\left(x\right)>c \right\} + p \mathbb{P}_1\left\{l\left(x\right)=c \right\}\right) + 3\left(\mathbb{P}_2\left\{l\left(x\right)>c \right\} + p \mathbb{P}_2\left\{l\left(x\right)=c \right\}\right) = 2
+$$
+Функция отношения правдоподобия:
+$$
+l\left(x\right)=\frac{f_2(x)}{f_1(x)}= \left\{\begin{array}{l}
+\frac{4 \cdot \exp \left(-2\left(x_1 + x_2\right)\right)}{\frac{1}{2 \pi} \cdot \exp\left(-\frac{\left(x_1+1\right)^2+\left(x_2+1\right)^2}{2}\right)}, x_1, x_2 \geqslant 0 \\
+0, \text { иначе}
+\end{array}\right. \Longrightarrow
+$$
+Получим, что
+$$
+l\left(x\right)=\frac{f_2(x)}{f_1(x)}= \left\{\begin{array}{l}
+8 \pi \cdot \exp\left(\frac{\left(x_1-1\right)^2+\left(x_2-1\right)^2}{2}\right), x_1, x_2 \geqslant 0 \\
+0, \text { иначе }
+\end{array}\right.
+$$
+Подставим одно из граничных значений для получения следующего критерия:
+$$
+\pi=\pi_{c, 1}=\left\{\begin{array}{l}
+1, l\left(x_1, x_2\right) \geqslant c \\
+0, l\left(x_1, x_2\right)<c
+\end{array} \quad \Rightarrow c=\frac{c_{21}-c_{11}}{c_{12}-c_{22}} \cdot \frac{q_1}{q_2}=\frac{2+1}{2+1} \cdot \frac{0,6}{0,4}=\frac{3}{2}\right.
+$$
+Тогда
+$$
+\pi=\pi_{c, 1}=\left\{\begin{array}{l}
+1, l\left(x_1, x_2\right) \geqslant 1.5 \\
+0, l\left(x_1, x_2\right)<1.5
+\end{array} \right.
+$$
+
+Найдем ошибки первого и второго родов.
+\begin{gather*}
+\alpha=\mathbb{P}_1\left[l(x) \geqslant \frac{3}{2}\right]= \\
+=\mathbb{P}_1\left[x_1 \geqslant 0, x_2 \geqslant 0,\left(x_1-1\right)^2+\left(x_2-1\right)^2 \geqslant 2 \cdot \ln \left(\frac{3}{16 \pi}\right)\right]= \\
+=\mathbb{P}_1\left[x_1 \geqslant 0, x_2 \geqslant 0,\left(x_1-1\right)^2+\left(x_2-1\right)^2 \geqslant-5.63\right] =\\
+=\mathbb{P}_1\left[x_1 \geqslant 0, x_2 \geqslant 0\right]=\left(1-F_{N(-1,1)}^2(0)\right)^2=(1-0.841)^2=0.025
+\\
+\\
+\beta=\mathbb{P}_2\left[l\left(x_1, x_2\right)<\frac{3}{2}\right]=\\
+=\mathbb{P}_2\left[\left(x_1-1\right)^2+\left(x_2-1\right)^2<-5.63\right]+\mathbb{P}_2\left[x_1<0 \text { или } x_2<0\right]=\\
+=0 + 0 = 0
+\end{gather*}
+Ответ:
+\vspace{10pt}
+$$ \alpha = 0.025, \quad \beta = 0$$
+
+\end{document}
