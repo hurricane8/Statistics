@@ -1,0 +1,75 @@
+\documentclass[14pt]{extarticle}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\DeclareCaptionLabelSeparator{dot}{. }
+\captionsetup{justification=centering,labelsep=dot}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\input glyphtounicode.tex
+\input glyphtounicode-cmr.tex
+\pdfgentounicode=1
+\usepackage{bm}
+
+\begin{document}
+
+ФИО: Молодцов Глеб Львович
+
+\vspace{10pt}
+
+Номер задачи: 66(а)
+
+\vspace{10pt}
+
+Решение:
+
+\vspace{10pt}
+
+Запишем матрицу штрафов:
+$$
+\text{C}=\left(\begin{array}{ll}
+0 & c_{12}  \\
+c_{12}  & 0
+\end{array}\right), \quad \mathbb{P}\left[H_1\right]=\mathbb{P}\left[H_2\right]=\frac{1}{2}
+$$
+Запишем риски:
+$$
+R_1(\delta)=0+c_{12}  \cdot \mathbb{P}_1\left[H_2\right]=c_{12}  \cdot \alpha, \quad R_2(\delta)=c_{12}  \cdot \beta
+$$
+
+Запишем Байесовский критерий для двух гипотез:
+$$
+l(x)=\frac{f_2(x)}{f_1(x)} \geqslant \frac{c_{21}-c_{11}}{c_{12}-c_{22}} \cdot \frac{q_1}{q_2}=1
+$$
+Тогда получим Байесовское решающее правило:
+$$
+\delta(x)=\left\{\begin{array}{l}
+1, l(x) \geqslant 1 \\
+0, l(x)<1
+\end{array}\right.
+$$
+Пусть решение принимается только на основании измерения первой компоненты. В таком случае СВ будет иметь одно из двух следующих нормальных распределений (одномерных):
+$$
+\tilde{H_1}: N(1,1) \quad \tilde{H_2}: N(-1,1)
+$$
+
+Запишем фукнцию $l(x)$ из байесовского правила:
+$$
+l(x)=\exp \left(\frac{1}{2} \cdot\left(-(x+1)^2+(x-1)^2\right)\right)=\exp (-2x)
+$$
+
+Найдем ошибки первого и второго рода:
+\begin{gather*}
+\alpha=\mathbb{P}_1[l(x) \geqslant 1]=\mathbb{P}_1[\exp (-2 x) \geqslant 1]=\mathbb{P}_1[x \leqslant 0]=F_{N(1,1)}(0)=0,1587 \\
+\beta=\mathbb{P}_2[l(x)<1]=\mathbb{P}_2[x>0]=1-F_{N(-1,1)}(0)=0,1587
+\end{gather*}
+
+Минимальный байесовский риск:
+$$
+r(\delta)=q_1 R_1(\delta)+q_2 R_2(\delta)=\frac{\alpha+\beta}{2}=0,1587 \cdot c_{12} 
+$$
+
+\end{document}
