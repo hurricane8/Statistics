@@ -1,0 +1,91 @@
+\documentclass[14pt]{extarticle}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\DeclareCaptionLabelSeparator{dot}{. }
+\captionsetup{justification=centering,labelsep=dot}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\input glyphtounicode.tex
+\input glyphtounicode-cmr.tex
+\pdfgentounicode=1
+\usepackage{bm}
+
+\begin{document}
+
+ФИО: Молодцов Глеб Львович
+
+\vspace{10pt}
+
+Номер задачи: 72
+
+\vspace{10pt}
+
+Решение:
+
+\vspace{10pt}
+
+Запишем матрицу штрафов:
+\begin{equation*}
+\text{C} = \left(
+\begin{array}{cccc}
+0 & 1 \\
+1 & 0 
+\end{array}
+\right)
+\end{equation*}
+$$
+\pi_{c, p}(x)=\left\{\begin{array}{l}
+1, l(x)>c \\
+p, l(x)=c \\
+0, l(x)<c
+\end{array}\right.
+$$
+Выпишем риски:
+$$
+\begin{aligned}
+& R_1(\pi)=0 \cdot \mathbb{P}_1\left[H_1\right]+1 \cdot \mathbb{P}_1\left[H_2\right]= p_{21} = \alpha\\
+& R_2(\pi)= 1 \cdot \mathbb{P}_2\left[H_1\right] -0 \cdot \mathbb{P}_2\left[H_2\right]= p_{12} =\beta
+\end{aligned}
+$$
+Таким оборазом, $\alpha = \beta$. \\
+
+Функция отношения правдоподобия:
+$$
+l\left(x\right)=\frac{f_2(x)}{f_1(x)}= \frac{I\{x \in [1;3]^n\}}{I\{x \in [0;2]^n\}}= \left\{\begin{array}{l}
++ \infty , x \in [1;3]^n \And  \exists i : x_i \in (2;3]^n\\
+1 , x \in [1;2]^n\\
+0 , x \in [0;2]^n \And  \exists i : x_i \in [0;1)^n\\
+\text{не определена , иначе}
+\end{array}\right. \Longrightarrow
+$$
+Подставим $c=1$:
+$$
+\alpha = \mathbb{P}_1[l(x)>c]+p\cdot\mathbb{P}_1[l(x)=c]=p\cdot \mathbb{P}_1[x \in [1,2]^n] = \frac{p}{2^n}
+$$
+$$
+\beta = \mathbb{P}_2[l(x)<c]+(1-p)\cdot\mathbb{P}_2[l(x)=c]=(1-p)\cdot \mathbb{P}_2[x \in [1,2]^n] = \frac{1-p}{2^n}
+$$
+
+$$
+\left.
+  \begin{array}{ccc}
+    R_1(\pi) = \frac{p}{2^n}\\
+    R_2(\pi) = \frac{1-p}{2^n} \\
+  \end{array}
+\right\} \Rightarrow p = 0.5
+$$
+
+Получим следующий критерий:
+$$
+\pi_{c, p}(x)=\left\{\begin{array}{l}
+1, l(x)>1 \\
+0.5, l(x)=1 \\
+0, l(x)<1
+\end{array}\right.
+$$
+
+\end{document}
