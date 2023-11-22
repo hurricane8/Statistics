@@ -1,0 +1,94 @@
+\documentclass[14pt]{extarticle}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\DeclareCaptionLabelSeparator{dot}{. }
+\captionsetup{justification=centering,labelsep=dot}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\input glyphtounicode.tex
+\input glyphtounicode-cmr.tex
+\pdfgentounicode=1
+\usepackage{bm}
+
+\begin{document}
+
+ФИО: Молодцов Глеб Львович
+
+\vspace{10pt}
+
+Номер задачи: 22
+
+\vspace{10pt}
+
+Решение:
+
+\vspace{10pt}
+
+Первая статистика: 
+
+$$
+A_1^* = \overline{X} - \frac{1}{2}
+$$
+
+Необходимо исследовать несмещенность этой статистики. Математическое ожидание статистики равно:
+
+$$
+\mathbb E_a \left[\overline{X} - \frac{1}{2}\right] = \mathbb E_a \left[\overline{X}\right] - \frac{1}{2} = \frac{1}{n}n\left(a + \frac{1}{2}\right) - \frac{1}{2} = a 
+$$
+
+Следовательно, статистика является несмещенной. Теперь проверим состоятельность:
+
+$$
+ T_n(X) \overset{\mathbb P_a}{\underset{n\rightarrow+\infty}{\longrightarrow}} a \Leftrightarrow \underset{n\rightarrow\infty}{\lim} \mathbb P_a\left[|T_n(X) - a| > \varepsilon\right] = 0
+$$
+
+Для оценки слагаемого под пределом пользуемся неравенством Чебышева:
+
+$$
+\forall \varepsilon > 0 ~\mathbb P\left[|\xi - \mathbb E\xi| > \varepsilon\right] \leqslant \frac{\mathbb D\xi}{\varepsilon^2}
+$$
+
+Для $\mathcal{U}[a, a+1]$, получаем:
+
+$$
+\mathbb D_a[A_1^*] = \frac{1}{n^2}\mathbb D_a\left[\sum\limits_{i=1}^n X_i\right] = \frac{1}{n^2}\sum\limits_{i=1}^n \mathbb D_a[X_i] = \frac{n}{n^2}\frac{1}{12} = \frac{1}{12n} < +\infty
+$$
+
+$$
+\forall \varepsilon > 0 ~ \mathbb P_a[|A_1^* - a| > \varepsilon] \leqslant \frac{\mathbb D[A_1^*]}{\varepsilon^2} = \frac{1}{12\varepsilon^2n}\underset{n\rightarrow\infty}{\longrightarrow}0
+$$
+
+Получили сходимость по вероятности к нулю, значит $A_1^*$ состоятельна.
+
+Вторая статистика: 
+
+$$
+A_2^* = X_n - \frac{n}{n+1}
+$$
+
+Перейдем к проверке несмещенности:
+
+$$
+\mathbb E_a[A_2^*] = \mathbb E_a[X_n] - \frac{n}{n+1} = \mathbb E_{Beta(n, 1)}[X_n - a] + a - \frac{n}{n+1} = \frac{n}{n+1} + a - \frac{n}{n+1} = a
+$$
+
+Таким образом, статистика также является несмещенной. Проверим на состоятельность:
+
+$$
+\mathbb D_a[A_2^*] = \mathbb D_a[X_n - a] = \mathbb D_{Beta(n, 1)}[\xi] = 
+\frac{n}{(n+1)^2(n+2)}\underset{n\rightarrow\infty}{\longrightarrow}0
+$$
+
+Теперь чтобы выяснить, какая статистика предпочтительнее, сравним их дисперсии. 
+
+$$\frac{1}{12n}~ ? ~ \frac{n}{(n+1)^2(n+2)} $$
+$$ n^3 - 8n^2 + 5n + 2 ~ ? ~ 0.$$
+$$ (n-1)(n-\frac{7}{2} \pm \frac{\sqrt{57}}{2}) ~ ? ~ 0.$$
+$$ (n-1)(n+0.27492)(n-7.2749) ~ ? ~ 0.$$
+
+Получили, что при $1\leqslant n < 8$ лучше использовать первую статистику, иначе вторую.
+\end{document}
