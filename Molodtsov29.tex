@@ -1,0 +1,35 @@
+\documentclass[14pt]{extarticle}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\DeclareCaptionLabelSeparator{dot}{. }
+\captionsetup{justification=centering,labelsep=dot}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\input glyphtounicode.tex
+\input glyphtounicode-cmr.tex
+\pdfgentounicode=1
+\usepackage{bm}
+
+\begin{document}
+
+ФИО: Молодцов Глеб Львович
+
+\vspace{10pt}
+
+Номер задачи: 29
+
+\vspace{10pt}
+
+Решение:
+
+\vspace{10pt}
+
+Рассмотрим вероятность $L(x, \theta) = \frac{\mathbb{I}\{x \in [\theta, 2\theta]^n\}}{\theta^n}$. \\
+Таким образом, $\theta \leq X_{(1)} , X_{(n)} \leq 2\theta \Rightarrow L(x, \theta) = \frac{\mathbb{I}\{X_{(1)} \geq \theta\}\cdot \mathbb{I}\{X_{(n)} \leq 2\theta\}}{\theta^n}$ \\
+Тогда рассмотрим статистику $S(x) = \left(X_{\left(1\right)}\quad X_{\left(n\right)}\right) $ \\
+В данном случае статистика является достаточной по критерию факторизации, так как для нее можно ввзять $g(s, \theta) = \frac{\mathbb{I}\{X_{(1)} \geq \theta\}\cdot \mathbb{I}\{X_{(n)} \leq 2\theta\}}{\theta^n}$, её размероность равна 2.
+\end{document}
